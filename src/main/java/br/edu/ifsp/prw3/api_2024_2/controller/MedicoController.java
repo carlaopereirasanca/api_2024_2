@@ -35,8 +35,7 @@ public class MedicoController {
         return repository.findAll();
     }
 
-    @GetMapping
-    @RequestMapping("algunsdados")
+    @GetMapping("algunsdados")
     public Page<DadosListagemMedico> listarAlgunsDados( Pageable paginacao )
     {
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
