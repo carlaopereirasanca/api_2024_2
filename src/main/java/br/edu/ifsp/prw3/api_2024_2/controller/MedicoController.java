@@ -45,17 +45,19 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<Medico> listar() {
+    public ResponseEntity listar() {
 
-        return repository.findAll();
+        return ResponseEntity.ok( repository.findAll() );
     }
 
     @GetMapping
     @RequestMapping("algunsdados")
-    public Page<DadosListagemMedico> listarAlgunsDados(
+    public ResponseEntity listarAlgunsDados(
             @PageableDefault( size=10, sort={"nome","crm"} ) Pageable paginacao ) {
 
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+        var pagina = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+
+        return ResponseEntity.ok(pagina);
     }
 
 
