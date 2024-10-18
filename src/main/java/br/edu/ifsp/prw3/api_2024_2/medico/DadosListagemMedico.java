@@ -1,6 +1,6 @@
 package br.edu.ifsp.prw3.api_2024_2.medico;
 
-public record DadosListagemMedico(String nome, String email,
+public record DadosListagemMedico(Long id, String nome, String email,
                                   String crm, Especialidade especialidade) {
 
     // Construtor que recebe um objeto Medico, pega só os dados necessários,
@@ -11,7 +11,7 @@ public record DadosListagemMedico(String nome, String email,
 
     public DadosListagemMedico(Medico medico) {
 
-        this( medico.getNome(), medico.getEmail(),
+        this( medico.getId(), medico.getNome(), medico.getEmail(),
                 medico.getCrm(), medico.getEspecialidade() );
     }
 
